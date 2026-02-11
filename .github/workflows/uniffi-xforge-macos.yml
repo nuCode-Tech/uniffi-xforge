@@ -27,14 +27,14 @@ jobs:
       - name: Build library (macOS)
         run: |
           cargo build --release \
-            --manifest-path examples/uniffi-xforge/Cargo.toml \
+            --manifest-path Cargo.toml \
             --target aarch64-apple-darwin
       - name: Bundle artifacts (macOS)
         run: |
           cargo run -p libforge-cli -- bundle \
-            --manifest-dir examples/uniffi-xforge \
+            --manifest-dir . \
             --target aarch64-apple-darwin \
-            --output-dir examples/uniffi-xforge/dist \
+            --output-dir dist \
             --profile release
       - name: Publish release
         if: ${{ inputs.publish == 'true' }}
@@ -44,5 +44,5 @@ jobs:
         run: |
           cargo run -p libforge-cli -- publish \
             --repository nuCode-Tech/lib-forge \
-            --manifest examples/uniffi-xforge/dist/libforge-manifest.json \
-            --assets-dir examples/uniffi-xforge/dist
+            --manifest dist/libforge-manifest.json \
+            --assets-dir dist

@@ -1,6 +1,6 @@
 precompiled_binaries:
-  repository: nuCode-Tech/lib-forge
-  public_key: "6a753fe723cc4e79ae32a0239807295e4b90c6b2f6d96b5956822deadecef52c"
+  repository: nuCode-Tech/uniffi-xforge
+  public_key: "a806ff55f62080f51fc5879678cc937ea2e9346116b6a6abbbb8674b72b3ad21"
   mode: auto
 build:
   targets:
