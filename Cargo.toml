@@ -1,0 +1,20 @@
+[package]
+name = "uniffi-xforge"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "staticlib"]
+[[bin]]
+name = "uniffi-bindgen"
+path = "uniffi-bindgen.rs"
+[dependencies]
+uniffi = { version = "=0.30.0", features = ["cli"] }
+uniffi-dart = { git = "https://github.com/Uniffi-Dart/uniffi-dart", rev = "e5aec6ea7423e60b2f92bd2f90a52a3cb595f55e" }
+camino = "1.2"
+toml = "0.8"
+[build-dependencies]
+uniffi = { version = "=0.30.0", features = ["build"] }
+uniffi-dart = { git = "https://github.com/Uniffi-Dart/uniffi-dart", rev = "e5aec6ea7423e60b2f92bd2f90a52a3cb595f55e", features = [
+    "build",
+] }
