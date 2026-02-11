@@ -1,16 +1,17 @@
 name: Uniffi XForge (macOS)
 
 on:
+  push:
   workflow_dispatch:
     inputs:
       publish:
         description: "Publish release assets (requires secrets)"
-        required: false
-        default: "false"
+        required: true
+        default: "true"
         type: choice
         options:
-          - "false"
           - "true"
+          - "false"
 
 jobs:
   bundle:
