@@ -40,7 +40,7 @@ jobs:
             --output-dir dist \
             --profile release
       - name: Publish release
-        if: ${{ inputs.publish == 'true' }}
+        if: ${{ github.event_name == 'push' || inputs.publish == 'true' }}
         env:
           LIBFORGE_PRIVATE_KEY: ${{ secrets.LIBFORGE_PRIVATE_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
