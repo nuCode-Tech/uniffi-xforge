@@ -26,7 +26,7 @@ jobs:
       - name: Add target
         run: rustup target add aarch64-apple-darwin
       - name: Install libforge-cli
-        run: cargo install --git https://github.com/nuCode-Tech/lib-forge --bin libforge-cli
+        run: cargo install --git https://github.com/nuCode-Tech/lib-forge --branch fix/ci libforge-cli --bin libforge-cli
       - name: Build library (macOS)
         run: |
           cargo build --release \
