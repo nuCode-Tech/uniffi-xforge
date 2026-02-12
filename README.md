@@ -11,9 +11,9 @@ This example includes:
 
 ## Dart package
 
-Location: `examples/uniffi-xforge/dart`
+Location: `dart`
 
-Run:
+Run from `dart/`:
 
 ```bash
 dart run bin/example.dart
@@ -22,7 +22,7 @@ dart run bin/example.dart
 Optional arguments:
 
 ```bash
-dart run bin/example.dart /absolute/path/to/examples/uniffi-xforge
+dart run bin/example.dart /absolute/path/to/uniffi-xforge
 ```
 
 ## Configure precompiled binaries

@@ -5,11 +5,21 @@ import 'package:native_toolchain_rust/native_toolchain_rust.dart';
 
 void main(List<String> args) async {
   await build(args, (input, output) async {
-    await const PrecompiledBuilder(
-      assetName: 'uniffi:uniffi_xforge_ffi',
-      cratePath: '..',
-      fallback: _runLocalBuild,
-    ).run(input: input, output: output);
+    try {
+      await const PrecompiledBuilder(
+        assetName: 'uniffi:uniffi_xforge_ffi',
+        cratePath: '..',
+        fallback: _runLocalBuild,
+      ).run(input: input, output: output);
+    } catch (_) {
+      throw Exception('Failed to build native library');
+      // await _runLocalBuild(
+      //   input,
+      //   output,
+      //   const [ToAppBundle()],
+      //   Logger('libforge.precompiled_builder'),
+      // );
+    }
   });
 }
 

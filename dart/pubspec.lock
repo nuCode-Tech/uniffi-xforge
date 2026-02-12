@@ -108,11 +108,9 @@ packages:
   libforge_dart:
     dependency: "direct main"
     description:
-      path: "adapters/dart"
-      ref: HEAD
-      resolved-ref: "01dc101586ce01226cecce91d9f2052fa87ef85d"
-      url: "https://github.com/nuCode-Tech/lib-forge.git"
-    source: git
+      path: "/Users/sambaby/Development/@stax/nucode/lib-forge/adapters/dart"
+      relative: false
+    source: path
     version: "0.1.0"
   logging:
     dependency: transitive
