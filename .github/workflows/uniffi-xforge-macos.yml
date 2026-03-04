@@ -25,8 +25,8 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
       - name: Add target
         run: rustup target add aarch64-apple-darwin
-      - name: Install libforge-cli
-        run: cargo install --git https://github.com/nuCode-Tech/lib-forge --branch fix/ci libforge-cli --bin libforge-cli
+      - name: Install xforge-cli
+        run: cargo install --git https://github.com/nuCode-Tech/x-forge --branch main xforge-cli --bin xforge-cli
       - name: Build library (macOS)
         run: |
           cargo build --release \
@@ -34,7 +34,7 @@ jobs:
             --target aarch64-apple-darwin
       - name: Bundle artifacts (macOS)
         run: |
-          libforge-cli bundle \
+          xforge-cli bundle \
             --manifest-dir . \
             --target aarch64-apple-darwin \
             --output-dir dist \
@@ -45,7 +45,7 @@ jobs:
           LIBFORGE_PRIVATE_KEY: ${{ secrets.LIBFORGE_PRIVATE_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          libforge-cli publish \
+          xforge-cli publish \
             --repository nuCode-Tech/uniffi-xforge \
-            --manifest dist/libforge-manifest.json \
+            --manifest dist/xforge-manifest.json \
             --assets-dir dist

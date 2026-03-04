@@ -2,7 +2,7 @@
 
 This example includes:
 - A minimal Rust crate with a UniFFI UDL file.
-- A Dart package that uses the `libforge_dart` adapter to download and verify precompiled artifacts.
+- A Dart package that uses the `xforge_dart` adapter to download and verify precompiled artifacts.
 
 ## Rust crate
 
@@ -27,10 +27,10 @@ dart run bin/example.dart /absolute/path/to/uniffi-xforge
 
 ## Configure precompiled binaries
 
-Edit `examples/uniffi-xforge/libforge.yaml` and set:
+Edit `examples/uniffi-xforge/xforge.yaml` and set:
 - `precompiled_binaries.repository`
 - `precompiled_binaries.url_prefix` (optional)
 - `precompiled_binaries.public_key`
 
-The adapter caches downloads under `.dart_tool/libforge/` in the crate directory.
+The adapter caches downloads under `.dart_tool/xforge/` in the crate directory.
 # unifdi-xforge
