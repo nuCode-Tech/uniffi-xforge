@@ -1,3 +1,4 @@
 target/
 dart/.dart_tool/
 .dart_tool/
+dart/example/uniffi_xforge_example/

@@ -6,8 +6,11 @@ environment:
   sdk: ">=3.3.0 <4.0.0"
 
 dependencies:
-  libforge_dart:
-    path: /Users/sambaby/Development/@stax/nucode/lib-forge/adapters/dart
+  xforge_dart:
+    git:
+      url: https://github.com/nuCode-Tech/x-forge.git
+      path: adapters/dart
+      ref: main
   path: ^1.9.0
   ffi: ^2.1.4
   hooks: ^1.0.0

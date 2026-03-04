@@ -105,13 +105,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.1.2"
-  libforge_dart:
-    dependency: "direct main"
-    description:
-      path: "/Users/sambaby/Development/@stax/nucode/lib-forge/adapters/dart"
-      relative: false
-    source: path
-    version: "0.1.0"
   logging:
     dependency: transitive
     description:
@@ -216,6 +209,15 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.1"
+  xforge_dart:
+    dependency: "direct main"
+    description:
+      path: "adapters/dart"
+      ref: main
+      resolved-ref: "9646c9a2422389f8129bba135b54d7630178ee64"
+      url: "https://github.com/nuCode-Tech/x-forge.git"
+    source: git
+    version: "0.1.0"
   yaml:
     dependency: transitive
     description:
