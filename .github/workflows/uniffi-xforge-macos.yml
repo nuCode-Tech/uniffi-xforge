@@ -42,7 +42,7 @@ jobs:
       - name: Publish release
         if: ${{ github.event_name == 'push' || inputs.publish == 'true' }}
         env:
-          LIBFORGE_PRIVATE_KEY: ${{ secrets.LIBFORGE_PRIVATE_KEY }}
+          XFORGE_PRIVATE_KEY: ${{ secrets.LIBFORGE_PRIVATE_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           xforge-cli publish \
