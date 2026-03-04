@@ -1,7 +1,7 @@
 import 'package:hooks/hooks.dart';
-import 'package:libforge_dart/libforge_dart.dart';
 import 'package:logging/logging.dart';
 import 'package:native_toolchain_rust/native_toolchain_rust.dart';
+import 'package:xforge_dart/xforge_dart.dart';
 
 void main(List<String> args) async {
   await build(args, (input, output) async {
@@ -11,14 +11,14 @@ void main(List<String> args) async {
         cratePath: '..',
         fallback: _runLocalBuild,
       ).run(input: input, output: output);
-    } catch (_) {
-      throw Exception('Failed to build native library');
-      // await _runLocalBuild(
-      //   input,
-      //   output,
-      //   const [ToAppBundle()],
-      //   Logger('libforge.precompiled_builder'),
-      // );
+    } catch (e) {
+        await _runLocalBuild(
+        input,
+        output,
+        const [ToAppBundle()],
+        Logger('libforge.precompiled_builder'),
+      );
+      
     }
   });
 }
