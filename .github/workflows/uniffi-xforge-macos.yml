@@ -2,6 +2,8 @@ name: Uniffi XForge (macOS)
 
 on:
   push:
+    branches:
+      - feat/android-ios-support
   workflow_dispatch:
     inputs:
       publish:
