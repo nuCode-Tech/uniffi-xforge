@@ -1,0 +1,8 @@
+[target.aarch64-linux-android]
+linker = "./scripts/xforge-link-aarch64-linux-android.sh"
+
+[target.armv7-linux-androideabi]
+linker = "./scripts/xforge-link-armv7-linux-androideabi.sh"
+
+[target.x86_64-linux-android]
+linker = "./scripts/xforge-link-x86_64-linux-android.sh"

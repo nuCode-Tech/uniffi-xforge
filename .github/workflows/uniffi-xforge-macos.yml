@@ -26,7 +26,7 @@ jobs:
       - name: Add target
         run: rustup target add aarch64-apple-darwin
       - name: Install xforge-cli
-        run: cargo install --git https://github.com/nuCode-Tech/x-forge --branch main xforge-cli --bin xforge-cli
+        run: cargo install --git https://github.com/nuCode-Tech/x-forge --branch feat/linker-scripts-and-docs xforge-cli --bin xforge-cli
       - name: Build library (macOS)
         run: |
           cargo build --release \
