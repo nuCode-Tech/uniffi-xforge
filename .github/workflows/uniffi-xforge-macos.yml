@@ -1,9 +1,7 @@
-name: Uniffi XForge (macOS)
+name: Uniffi XForge (Apple + Android)
 
 on:
   push:
-    branches:
-      - feat/android-ios-support
   workflow_dispatch:
     inputs:
       publish:
@@ -18,6 +16,13 @@ on:
 jobs:
   bundle:
     runs-on: macos-latest
+    strategy:
+      max-parallel: 1
+      matrix:
+        target:
+          - aarch64-apple-ios
+          - aarch64-apple-ios-sim
+          - aarch64-linux-android
     permissions:
       contents: write
     env:
@@ -25,20 +30,35 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
-      - name: Add target
-        run: rustup target add aarch64-apple-darwin
+      - name: Add Rust target
+        run: rustup target add ${{ matrix.target }}
+      - name: Setup Android SDK
+        if: ${{ matrix.target == 'aarch64-linux-android' }}
+        uses: android-actions/setup-android@v3
+      - name: Setup Android NDK
+        if: ${{ matrix.target == 'aarch64-linux-android' }}
+        uses: nttld/setup-ndk@v1
+        with:
+          ndk-version: r27c
+          add-to-path: false
       - name: Install xforge-cli
         run: cargo install --git https://github.com/nuCode-Tech/x-forge --branch feat/linker-scripts-and-docs xforge-cli --bin xforge-cli
-      - name: Build library (macOS)
+      - name: Build library
         run: |
+          if [ "${{ matrix.target }}" = "aarch64-linux-android" ]; then
+            LLVM_BIN="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/darwin-x86_64/bin"
+            export PATH="$LLVM_BIN:$PATH"
+            export CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER="$LLVM_BIN/aarch64-linux-android35-clang"
+          fi
+
           cargo build --release \
             --manifest-path Cargo.toml \
-            --target aarch64-apple-darwin
-      - name: Bundle artifacts (macOS)
+            --target ${{ matrix.target }}
+      - name: Bundle artifacts
         run: |
           xforge-cli bundle \
             --manifest-dir . \
-            --target aarch64-apple-darwin \
+            --target ${{ matrix.target }} \
             --output-dir dist \
             --profile release
       - name: Publish release
